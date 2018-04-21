@@ -10,31 +10,28 @@ class Union(object):
         self.time_counter = 0
         self.ini_time = time.time()
         self.count = n
-        # all numbers. when initialed, every number make a data set
-
+        # all numbers. when initialed, every number make a tree
         self.id = list(xrange(n))
 
     def connected(self, p, q):
-        # if p, q is connected, p, q is in the same set of data
-        return self.id[p] == self.id[q]
+        # if p, q is connected, p, q is in the same tree
+        return self.find(p) == self.find(q)
 
     def find(self, p):
-        return self.id[p]
+        while p != self.id[p]:
+            p = self.id[p]
+        return p
 
     def union(self, p, q):
         self.time_counter += 1
         if not self.time_counter % 100:
             print "data count: {}, time cost: {}".format(self.time_counter, time.time() - self.ini_time)
-        # p, q given in method union mean p, q is conneted(in the same data set)
         p_id = self.find(p)
         q_id = self.find(q)
-        if p_id == q_id:
-            return
-        # when a pair of number is gaven, and they are in different set, means this two set are connected yet, make these two data sets by making the id of numbers in this two set same, and decrease set count。
-        for i in xrange(len(self.id)):
-            if self.id[i] == p_id:
-                self.id[i] = q_id
-        self.count -= 1
+        # if p, q is not connect, make p_id equal q_id, which means q is the root of p
+        if not self.connected(p, q):
+            self.id[p_id] = q_id
+            self.count -= 1
 
 
 FILE_NAME_TO_NUMBER = {

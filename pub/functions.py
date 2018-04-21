@@ -6,7 +6,7 @@ def time_function(func):
         t1 = time.time()
         result = func(*args, **kwargs)
         t2 = time.time()
-        print "function name: {}|| Time cost: {}".format(func.__name__, t2 - t1)
+        print("function name: {}|| Time cost: {}".format(func.__name__, t2 - t1))
         return result
     return wrapper
 
@@ -24,3 +24,7 @@ def binsearch(seq, target):
             max_ = m - 1
         else:
             return m
+
+
+def is_sorted(l):
+    return all(l[i] <= l[i + 1] for i in range(len(l) - 1))
