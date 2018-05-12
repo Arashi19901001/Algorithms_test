@@ -7,6 +7,7 @@ except:
     raise
 
 
+# 遍历，找到最小的元素，排到前面
 @time_function
 def select_sort(l):
     leng = len(l)
