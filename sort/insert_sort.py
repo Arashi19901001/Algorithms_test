@@ -16,7 +16,7 @@ def insert_sort(l):
     for i in range(0, leng):
         tmp = l[i]
         j = i
-        while(j >= 0) and (tmp < l[j - 1]):
+        while(j - 1 >= 0) and (tmp < l[j - 1]):
             l[j] = l[j - 1]
             j -= 1
         l[j] = tmp
