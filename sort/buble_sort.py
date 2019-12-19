@@ -7,7 +7,7 @@ except:
     raise
 
 
-#比较相邻元素的大小， 如果前者比后者大， 则交换位置
+# 比较相邻元素的大小， 如果前者比后者大， 则交换位置
 @time_function
 def buble_sort(l):
     leng = len(l)
